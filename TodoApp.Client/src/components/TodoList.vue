@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { onMounted } from 'vue';
-import { useTodoStore } from '@/stores/todoStore';
-import TodoItem from '@/components/TodoItem.vue';
-
-const todoStore = useTodoStore();
-
-onMounted(() => {
-    todoStore.fetchTodos()
-    console.log(todoStore.$state.todos)
-});
-</script>
 <template>
     <div class="flex-1 overflow-auto">
         <table class="w-full text-left">
@@ -24,8 +12,29 @@ onMounted(() => {
                 </tr>
             </thead>
             <tbody>
-                <TodoItem v-for="todo in todoStore.todos" :todoItem="todo" />
+                <TodoItem 
+                    v-for="todo in todoStore.todos" 
+                    :todoItem="todo"
+                    @edit="editTodo"
+                />
             </tbody>
         </table>
     </div>
 </template>
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import { useTodoStore } from '@/stores/todoStore';
+import { Todo } from "@/types/Todo";
+import TodoItem from '@/components/TodoItem.vue';
+
+const todoStore = useTodoStore();
+
+onMounted(() => {
+    todoStore.fetchTodos();
+});
+
+const emit = defineEmits(['editTodo', 'deleteTodo']);
+const editTodo = (todo : Todo) => {
+    emit('editTodo', todo);
+}
+</script>

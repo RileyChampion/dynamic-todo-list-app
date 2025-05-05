@@ -1,28 +1,52 @@
 <template>
-    <div v-if="isOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div v-if="isOpen" class="fixed inset-0 bg-black bg-opacity-25 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
             <div>
                 <h2>{{isEdit ? 'Edit Todo' : 'Add New Todo'}}</h2>
-                <button></button>
+                <button @click="closeModal">
+                    <CloseIcon />
+                </button>
             </div>
-            <form>
+            <form @submit.prevent="saveTodo">
+                <div class="mb-4">
+                    <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                    <input
+                        type="text"
+                        id="title"
+                        v-model="todo.title"
+                        placeholder="Enter todo title"
+                        required
+                    />
+                </div>
+                <div class="mb-4">
+                    <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Title</label>
+                    <textarea
+                        type="text"
+                        id="description"
+                        v-model="todo.description"
+                        placeholder="Enter todo title"
+                        rows="3"
+                        required
+                    ></textarea>
+                </div>
             </form>
         </div>
     </div>
 </template>
-<script>
-import { ref, reactive, computed, watch } from 'vue';
+<script setup>
+import CloseIcon from "@/components/icons/CloseIcon.vue"
+import { reactive, computed, watch } from 'vue';
 import { useTodoStore } from '@/stores/todoStore';
 
 const props = defineProps({
-  isOpen: {
-    type: Boolean,
-    default: false
-  },
-  editTodo: {
-    type: Object,
-    default: null
-  }
+    isOpen: {
+        type: Boolean,
+        default: false
+    },
+    editTodo: {
+        type: Object,
+        default: null
+    }
 });
 
 const emit = defineEmits(['close', 'saved']);
@@ -66,7 +90,7 @@ watch(
 );
 
 const closeModal = () => {
-     emit('close');
+    emit('close');
 };
 
 const saveTodo = () => {

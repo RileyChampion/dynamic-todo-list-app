@@ -1,14 +1,13 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
   <header>
     <h1 class="text-3xl">Dynamic Todo App</h1>
   </header>
-  <main class="flex-1 flex flex-col">
+  <main class="flex flex-1">
     <RouterView />
   </main>
-</template>
+</template> 
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import { RouterView } from 'vue-router'
 
-<style scoped></style>
+</script>
