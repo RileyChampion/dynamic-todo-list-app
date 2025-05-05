@@ -24,9 +24,7 @@ public class BasicTodoFeatureProvider : ITodoFeatureProvider {
     public async Task<Todo> CreateTodo(CreateTodoDto createDto){
         Todo newTodo = new Todo{
             Title = createDto.Title,
-            Description = createDto.Description,
-            Priority = createDto.Priority,
-            DueDate = createDto.DueDate
+            Description = createDto.Description
         };
 
         _context.Todos.Add(newTodo);
@@ -45,8 +43,6 @@ public class BasicTodoFeatureProvider : ITodoFeatureProvider {
         updatedTodo.Title = updateDto.Title;
         updatedTodo.Description = updateDto.Description;
         updatedTodo.IsCompleted = updateDto.IsCompleted;
-        updatedTodo.Priority = updateDto.Priority ?? null;
-        updatedTodo.DueDate = updateDto.DueDate ?? null;
 
         await _context.SaveChangesAsync();
 
