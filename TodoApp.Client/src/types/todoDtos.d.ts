@@ -1,14 +1,14 @@
 export interface CreateTodo {
-    Title: String;
-    Description: String;
-    Priority: number | null;
-    DueDate: Date | null;
-};
+  title: String
+  description: String
+  priority: number | null
+  dueDate: Date | null
+}
 
 export interface UpdateTodo {
-    Title: String;
-    Description: String;
-    IsCompleted: boolean;
-    Priority: number | null;
-    DueDate: Date | null;
-};
+  title: String
+  description: String
+  isCompleted: boolean
+  priority: number | null
+  dueDate: Date | null
+}

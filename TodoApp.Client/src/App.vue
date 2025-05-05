@@ -4,15 +4,11 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header>
-    <h1>Dynamic Todo App</h1>
+    <h1 class="text-3xl">Dynamic Todo App</h1>
   </header>
-  <main>
+  <main class="flex-1 flex flex-col">
     <RouterView />
   </main>
-  <footer>
-    <p>{{ new Date().getFullYear() }} Todo App</p>
-  </footer>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

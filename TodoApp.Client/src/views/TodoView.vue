@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import {onMounted} from 'vue';
-onMounted(() => {
-    console.log("hello!")
-})
+import TodoList from '@/components/TodoList.vue'
+import TodoSearchBar from '@/components/TodoSearchBar.vue'
+import TodoSwitchProvider from "@/components/TodoSwitchProvider.vue"
 </script>
 
 <template>
-    <h1>Yo</h1>
+    <div class="flex flex-row">
+        <TodoSearchBar class="flex-1/2" />
+        <TodoSwitchProvider class="flex-1" />
+    </div>
+    <TodoList />
 </template>

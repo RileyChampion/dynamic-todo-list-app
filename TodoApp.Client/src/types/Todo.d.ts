@@ -1,13 +1,13 @@
 type Todo = {
-    Id: number;
-    Title: String;
-    Description: String;
-    IsCompleted: boolean;
-    CompletedAt: Date | null;
-    CreatedAt: Date;
-    UpdatedAt: Date;
-    Priority: number | null;
-    DueDate: Date | null;
-};
+  id: number
+  title: String
+  description: String
+  isCompleted: boolean
+  completedAt: Date | null
+  createdAt: Date
+  updatedAt: Date
+  priority: number | null
+  dueDate: Date | null
+}
 
-export { Todo };
+export { Todo }
